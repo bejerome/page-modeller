@@ -1,6 +1,6 @@
 export default {
   showTooltips: true,
   modelHiddenElements: false,
-  darkMode: false,
+  darkMode: true,
   clickTableRowsToViewMatchedElements: false,
 };

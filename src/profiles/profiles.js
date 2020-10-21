@@ -4,8 +4,14 @@ import RobotFrameworkTemplate from './RobotFrameworkTemplate';
 import PuppeteerTemplate from './PuppeteerTemplate';
 import ProtractorTemplate from './ProtractorTemplate';
 import ProtractorTypescriptTemplate from './ProtractorTypescriptTemplate';
+import PageObjectTemplate from './SeleniumWebDriverPageObjectTemplate';
 
 export default [
+  {
+    name: 'PageObject',
+    template: PageObjectTemplate,
+    locators: ['id', 'linkText', 'partialLinkText', 'name', 'model', 'binding', 'css', 'xpath', 'className', 'tagName'],
+  },
   {
     name: 'Selenium WebDriver Java',
     template: SeleniumWebDriverJavaTemplate,
@@ -36,4 +42,5 @@ export default [
     template: ProtractorTypescriptTemplate,
     locators: ['id', 'linkText', 'partialLinkText', 'name', 'model', 'binding', 'css', 'xpath', 'className', 'tagName'],
   }
+  
 ];
