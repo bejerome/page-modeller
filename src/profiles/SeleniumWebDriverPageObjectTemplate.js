@@ -61,13 +61,13 @@ ${transformToPageObject(entity)}:${renderLocatorName(entity)},${nameSpaces(entit
 const renderLocators = entities => {
   minWidth = getMinWidth(entities);
   return `
-*** Variables ***${entities.map(entity => renderLocatorVariable(entity)).join('')}`;
+  #---------- Page Objects -----------------${entities.map(entity => renderLocatorVariable(entity)).join('')}`;
 };
 
 const renderAwait = entities => `
 
 def await
-  CXA::Web.lazy_check_element(self, '${entities.map(entity => renderLocatorName(entity)).join("','")}'})
+  CXA::Web.lazy_check_element(self, '${entities.map(entity => renderLocatorName(entity)).join("','")}')
   CXA.output_text 'I am on page'
 end
 `;

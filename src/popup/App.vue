@@ -42,7 +42,7 @@ body {
 
 <style lang="scss" scoped>
 h1.title {
-  color: #000;
+  color: #28abb9;
 }
 @import '../styles/colours';
 @import '../styles/buttons';

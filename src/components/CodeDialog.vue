@@ -2,7 +2,7 @@
   <v-dialog scrollable v-model="dialog" @keydown.esc="cancel">
     <v-card>
       <v-toolbar dark dense flat>
-        <v-toolbar-title class="white--text">{{ title }}</v-toolbar-title>
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
       <v-card-text style="height: 450px">
         <pre>
@@ -56,6 +56,10 @@ export default {
 @import '../styles/colours';
 @import '../styles/buttons';
 pre {
-  font-size: 11px;
+  font-size: 15px;
+  color: #28abb9;
+}
+v-toolbar-title {
+  color: #28abb9;
 }
 </style>

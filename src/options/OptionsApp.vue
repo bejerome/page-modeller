@@ -108,7 +108,7 @@ export default {
   width: 32px !important;
 }
 .header-title {
-  color: dimgray;
+  color: #28abb9;
   font-size: 1.8em !important;
   font-weight: 300;
   img {

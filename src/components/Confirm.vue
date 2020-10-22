@@ -2,7 +2,7 @@
   <v-dialog v-model="dialog" :max-width="options.width" @keydown.esc="cancel">
     <v-card>
       <v-toolbar dark dense flat>
-        <v-toolbar-title class="white--text">{{ title }}</v-toolbar-title>
+        <v-toolbar-title id="title">{{ title }}</v-toolbar-title>
       </v-toolbar>
       <v-card-text v-show="!!message" class="pt-3">{{ message }}</v-card-text>
       <v-card-actions>
@@ -52,4 +52,7 @@ export default {
 <style scoped lang="scss">
 @import '../styles/colours';
 @import '../styles/buttons';
+v-toolbar-title.title {
+  color: #28abb9;
+}
 </style>

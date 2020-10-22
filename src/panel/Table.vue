@@ -4,7 +4,7 @@
       <form>
         <v-card>
           <v-toolbar dark dense flat>
-            <v-toolbar-title class="white--text">Edit Element</v-toolbar-title>
+            <v-toolbar-title class="orange--text">Edit Element</v-toolbar-title>
           </v-toolbar>
           <v-card-text class="pb-1">
             <v-container grid-list-md pa-0>

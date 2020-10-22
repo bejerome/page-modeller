@@ -52,7 +52,7 @@
           <v-icon>{{ mdiCodeTags }}</v-icon>
         </v-btn>
       </template>
-      <span>Generate Code</span>
+      <span ref="btn-code" id="btn-code">Generate Code</span>
     </v-tooltip>
   </v-app-bar>
 </template>
@@ -99,4 +99,7 @@ export default {
 <style scoped lang="scss">
 @import '../styles/colours';
 @import '../styles/buttons';
+span {
+  color: #28abb9;
+}
 </style>
