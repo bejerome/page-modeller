@@ -4,7 +4,7 @@
       <form>
         <v-card>
           <v-toolbar dark dense flat>
-            <v-toolbar-title class="orange--text">Edit Element</v-toolbar-title>
+            <v-toolbar-title class="blue--text">Edit Element</v-toolbar-title>
           </v-toolbar>
           <v-card-text class="pb-1">
             <v-container grid-list-md pa-0>
@@ -83,7 +83,7 @@
       </template>
       <template slot="no-data">
         <tr>
-          <td colspan="3">Scan the page or start adding elements to build the model</td>
+          <td class="blue--text" colspan="3">Scan the page or start adding elements to build the model</td>
         </tr>
       </template>
     </v-data-table>

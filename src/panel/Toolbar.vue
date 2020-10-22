@@ -6,16 +6,16 @@
           <v-icon>{{ mdiFileFind }}</v-icon>
         </v-btn>
       </template>
-      <span v-if="!isInspecting">Scan Page</span> <span v-if="isScanning">Stop Scanning</span>
+      <span class="blue--text" v-if="!isInspecting">Scan Page</span> <span v-if="isScanning">Stop Scanning</span>
     </v-tooltip>
 
     <v-tooltip bottom :disabled="!showTooltips || !hasModel || isInspecting" open-delay="600">
       <template v-slot:activator="{ on }">
-        <v-btn v-on="on" icon :disabled="!hasModel || isInspecting" v-on:click="deleteModel">
+        <v-btn class="red--text" v-on="on" icon :disabled="!hasModel || isInspecting" v-on:click="deleteModel">
           <v-icon>{{ mdiDeleteSweep }}</v-icon>
         </v-btn>
       </template>
-      <span>Delete Model</span>
+      <span class="blue--text">Delete Model</span>
     </v-tooltip>
 
     <v-tooltip bottom :disabled="!showTooltips || hasModel || isInspecting" open-delay="600">
@@ -32,7 +32,7 @@
           </v-list>
         </v-menu>
       </template>
-      <span>Select Modelling Profile</span>
+      <span class="blue--text">Select Modelling Profile</span>
     </v-tooltip>
 
     <v-spacer></v-spacer>
@@ -43,7 +43,7 @@
           <v-icon>{{ mdiPlaylistPlus }}</v-icon>
         </v-btn>
       </template>
-      <span v-if="!isInspecting">Add Element</span> <span v-if="isAdding">Stop Adding Element</span>
+      <span class="blue--text" v-if="!isInspecting">Add Element</span> <span v-if="isAdding">Stop Adding Element</span>
     </v-tooltip>
 
     <v-tooltip bottom :disabled="!showTooltips || (!hasModel && !isInspecting)" open-delay="600">
@@ -52,7 +52,7 @@
           <v-icon>{{ mdiCodeTags }}</v-icon>
         </v-btn>
       </template>
-      <span ref="btn-code" id="btn-code">Generate Code</span>
+      <span class="blue--text">Generate Code</span>
     </v-tooltip>
   </v-app-bar>
 </template>

@@ -61,7 +61,10 @@ ${transformToPageObject(entity)}:${renderLocatorName(entity)},${nameSpaces(entit
 const renderLocators = entities => {
   minWidth = getMinWidth(entities);
   return `
-  #---------- Page Objects -----------------${entities.map(entity => renderLocatorVariable(entity)).join('')}`;
+  #---------- Page Objects -----------------
+  ${entities.map(entity => renderLocatorVariable(entity)).join('')}
+  
+  -------------------------------------------`
 };
 
 const renderAwait = entities => `
