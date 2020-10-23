@@ -1,4 +1,5 @@
 import lowerFirst from 'lodash/lowerFirst';
+import { isClickable } from './templates-helpers';
 
 let minWidth = 0;
 
@@ -22,25 +23,50 @@ const transformLocatorName = locatorName => {
   }
 };
 
+// const transformToPageObject = entity => {
+//   const locator = entity.locators.find(l => l.selected);
+//   switch (true) {
+//     case /^a/.test(locator.locator):
+//       return 'a(';
+//     case /^p/.test(locator.locator):
+//       return 'p(';
+//     case /^h2/.test(locator.locator):
+//       return 'h2(';
+//     case /^h1/.test(locator.locator):
+//       return 'h1(';
+//     case /^input/.test(locator.locator):
+//       return 'text_field(';
+//     case /^div/.test(locator.locator):
+//       return 'div(';
+//     default:  
+//       return 'element(';
+//   }
+// };
+
 const transformToPageObject = entity => {
-  const locator = entity.locators.find(l => l.selected);
+  const locator = entity.name;
+  
   switch (true) {
-    case /^a/.test(locator.locator):
-      return 'a(';
-    case /^p/.test(locator.locator):
-      return 'p(';
-    case /^h2/.test(locator.locator):
-      return 'h2(';
-    case /^h1/.test(locator.locator):
-      return 'h1(';
-    case /^input/.test(locator.locator):
+    case /btn$/.test(locator):
+      return 'button(';
+    case /field$/.test(locator):
       return 'text_field(';
-    case /^div/.test(locator.locator):
+    case /img$/.test(locator):
+      return 'image(';
+    case /h1$/.test(locator):
+      return 'h1(';
+    case /area$/.test(locator):
+      return 'text_area(';
+    case /link$/.test(locator):
+      return 'link(';
+    case /div$/.test(locator):
       return 'div(';
     default:  
       return 'element(';
   }
 };
+
+
 
 const renderInclude =() => `
 include PageObject 
@@ -64,7 +90,7 @@ const renderLocators = entities => {
   #---------- Page Objects -----------------
   ${entities.map(entity => renderLocatorVariable(entity)).join('')}
   
-  -------------------------------------------`
+  #---------- Page Objects End -----------------`
 };
 
 const renderAwait = entities => `
@@ -82,10 +108,26 @@ def screen_loaded
   CXA.output_text 'page loaded'
 end
 `;
-  
+
+const renderClickMethod = entity => {
+  if (!isClickable(entity)) {
+    return '';
+  }
+  return `
+ def click_on_${lowerFirst(entity.name)}
+  ${lowerFirst(entity.name)}
+  CXA.output_text 'clicked on ${lowerFirst(entity.name)}'
+ end
+`;
+};
+
+ 
 
 export default model =>
   renderInclude() +
   renderLocators(model.entities) +
   renderAwait(model.entities) +
-  renderScreenLoaded(model.entities);
+  renderScreenLoaded(model.entities) +
+  model.entities
+  .map(entity => `${renderClickMethod(entity)}`)
+  .join('');
