@@ -63,7 +63,6 @@ export default {
     },
     add() {
       this.isAdding = !this.isAdding;
-
       if (this.isAdding) {
         chrome.runtime.sendMessage({
           type: 'appStartAdding',

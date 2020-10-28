@@ -62,19 +62,19 @@
           <td class="text-right px-0 unselectable">
             <v-tooltip left open-delay="1000" :disabled="!showTooltips || isInspecting">
               <template v-slot:activator="{ on }">
-                <v-icon v-on="on" class="mr-1 pa-1" @click="showMatchesForEntity(props.item)" :disabled="isInspecting"> {{ mdiEye }} </v-icon>
+                <v-icon v-on="on" class="mr-1 pa-1 green--text" @click="showMatchesForEntity(props.item)" :disabled="isInspecting"> {{ mdiEye }} </v-icon>
               </template>
               <span>View Matched Elements</span>
             </v-tooltip>
             <v-tooltip left open-delay="1000" :disabled="!showTooltips || isInspecting">
               <template v-slot:activator="{ on }">
-                <v-icon v-on="on" class="mr-1 pa-1" @click="editItem(props.item)" :disabled="isInspecting"> {{ mdiPencil }} </v-icon>
+                <v-icon v-on="on" class="mr-1 pa-1 orange--text" @click="editItem(props.item)" :disabled="isInspecting"> {{ mdiPencil }} </v-icon>
               </template>
               <span>Edit</span>
             </v-tooltip>
             <v-tooltip left open-delay="1000" :disabled="!showTooltips || isInspecting">
               <template v-slot:activator="{ on }">
-                <v-icon v-on="on" class="mr-2 pa-1" @click="deleteItem(props.item)" :disabled="isInspecting"> {{ mdiDelete }} </v-icon>
+                <v-icon v-on="on" class="mr-2 pa-1 red--text" @click="deleteItem(props.item)" :disabled="isInspecting"> {{ mdiDelete }} </v-icon>
               </template>
               <span>Delete</span>
             </v-tooltip>

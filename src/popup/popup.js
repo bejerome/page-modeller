@@ -4,7 +4,7 @@ import App from './App';
 
 import 'vuetify/dist/vuetify.css';
 
-Vue.config.devtools = false;
+Vue.config.devtools = true;
 new Vue({
   vuetify,
   render: (h) => h(App),

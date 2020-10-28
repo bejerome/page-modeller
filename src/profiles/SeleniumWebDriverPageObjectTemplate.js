@@ -16,6 +16,8 @@ const transformLocatorName = locatorName => {
       return 'visible_text';
     case 'partialLinkText':
       return 'visible_text';
+    case 'className':
+      return 'class';
     case 'tagName':
       return 'tag';
     default:
@@ -49,6 +51,8 @@ const transformToPageObject = entity => {
   switch (true) {
     case /btn$/.test(locator):
       return 'button(';
+    case /Btn$/.test(locator):
+      return 'button(';
     case /field$/.test(locator):
       return 'text_field(';
     case /img$/.test(locator):
@@ -61,6 +65,10 @@ const transformToPageObject = entity => {
       return 'link(';
     case /div$/.test(locator):
       return 'div(';
+    case /Lbl$/.test(locator):
+      return 'label(';
+    case /Value$/.test(locator):
+      return 'label(';
     default:  
       return 'element(';
   }
@@ -78,7 +86,7 @@ const renderLocatorName = entity => lowerFirst(entity.name);
 
 const renderLocator = entity => {
   const locator = entity.locators.find(l => l.selected);
-  return `${transformLocatorName(locator.name)}:'${locator.locator}'`;
+  return `${transformLocatorName(locator.name)}: '${locator.locator}'`;
 };
 
 const renderLocatorVariable = entity => `
