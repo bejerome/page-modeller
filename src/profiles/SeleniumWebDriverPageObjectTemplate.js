@@ -11,39 +11,37 @@ const getMinWidth = entities => {
 const nameSpaces = name => ''.padEnd(minWidth - name.length, ' ');
 
 const transformLocatorName = locatorName => {
-  switch (locatorName) {
-    case 'linkText':
+  switch (true) {
+    case /text$/.test(locatorName.toLowerCase()):
       return 'visible_text';
-    case 'partialLinkText':
-      return 'visible_text';
-    case 'className':
+    case /^class/.test(locatorName.toLowerCase()):
       return 'class';
-    case 'tagName':
+    case /^tag/.test(locatorName.toLowerCase()):
       return 'tag';
     default:
       return locatorName;
   }
 };
 
-// const transformToPageObject = entity => {
-//   const locator = entity.locators.find(l => l.selected);
-//   switch (true) {
-//     case /^a/.test(locator.locator):
-//       return 'a(';
-//     case /^p/.test(locator.locator):
-//       return 'p(';
-//     case /^h2/.test(locator.locator):
-//       return 'h2(';
-//     case /^h1/.test(locator.locator):
-//       return 'h1(';
-//     case /^input/.test(locator.locator):
-//       return 'text_field(';
-//     case /^div/.test(locator.locator):
-//       return 'div(';
-//     default:  
-//       return 'element(';
-//   }
-// };
+const transformWithCss = entity => {
+  const locator = entity.locators.find(l => l.selected);
+  switch (true) {
+    case /^a/.test(locator.locator):
+      return 'a(';
+    case /^p/.test(locator.locator):
+      return 'p(';
+    case /^h2/.test(locator.locator):
+      return 'h2(';
+    case /^h1/.test(locator.locator):
+      return 'h1(';
+    case /^input/.test(locator.locator):
+      return 'text_field(';
+    case /^div/.test(locator.locator):
+      return 'div(';
+    default:  
+      return 'element(';
+  }
+};
 
 const transformToPageObject = entity => {
   const locator = entity.name.toLowerCase();
@@ -68,7 +66,7 @@ const transformToPageObject = entity => {
     case /value$/.test(locator):
       return 'label(';
     default:  
-      return 'element(';
+      return transformWithCss(entity);
   }
 };
 
@@ -84,7 +82,13 @@ const renderLocatorName = entity => entity.name.toLowerCase();
 
 const renderLocator = entity => {
   const locator = entity.locators.find(l => l.selected);
-  return `${transformLocatorName(locator.name)}: '${locator.locator}'`;
+  let result;
+  if (locator.name === "css" || locator.name === "xpath"){
+    result = `${transformLocatorName(locator.name)}: "${locator.locator}"`;
+  }else{ 
+    result = `${transformLocatorName(locator.name)}: '${locator.locator}'`;   
+  }
+  return result;
 };
 
 const renderLocatorVariable = entity => `

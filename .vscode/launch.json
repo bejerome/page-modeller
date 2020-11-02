@@ -9,9 +9,8 @@
       "program": "${workspaceFolder}/scripts/launch-chrome.js",
       "request": "launch",
       "skipFiles": ["<node_internals>/**"],
-      "sourceMaps": true,
-      "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
-      "type": "pwa-node"
+      "type": "node",
+      "outFiles": ["${workspaceFolder}/build/**/*.js"]
     }
   ]
 }
