@@ -4,7 +4,7 @@
       <form>
         <v-card>
           <v-toolbar dark dense flat>
-            <v-toolbar-title class="blue--text">Edit Element</v-toolbar-title>
+            <v-toolbar-title class="white--text">Edit Element</v-toolbar-title>
           </v-toolbar>
           <v-card-text class="pb-1">
             <v-container grid-list-md pa-0>
@@ -54,27 +54,27 @@
         </v-card>
       </form>
     </v-dialog>
-    <v-data-table :items="model == null ? [] : model.entities" :headers="headers" hide-default-footer fixed-header class="elevation-0" mobile-breakpoint="50">
+    <v-data-table disable-pagination :items="model == null ? [] : model.entities" :headers="headers" hide-default-footer fixed-header class="elevation-0" mobile-breakpoint="50">
       <template slot="item" slot-scope="props">
         <tr v-on:dblclick="editItem(props.item)" @click="showMatchesForEntity(props.item, true)" class="unselectable" v-bind:class="{ disabled: isInspecting }">
           <td>{{ props.item.name }}</td>
           <td>{{ itemLocator(props.item) }}</td>
-          <td class="text-right px-0 unselectable">
+          <td class="text-right px-0 unselectable" nowrap="nowrap">
             <v-tooltip left open-delay="1000" :disabled="!showTooltips || isInspecting">
               <template v-slot:activator="{ on }">
-                <v-icon v-on="on" class="mr-1 pa-1 green--text" @click="showMatchesForEntity(props.item)" :disabled="isInspecting"> {{ mdiEye }} </v-icon>
+                <v-icon v-on="on" class="mr-1 pa-1" @click="showMatchesForEntity(props.item)" :disabled="isInspecting"> {{ mdiEye }} </v-icon>
               </template>
               <span>View Matched Elements</span>
             </v-tooltip>
             <v-tooltip left open-delay="1000" :disabled="!showTooltips || isInspecting">
               <template v-slot:activator="{ on }">
-                <v-icon v-on="on" class="mr-1 pa-1 orange--text" @click="editItem(props.item)" :disabled="isInspecting"> {{ mdiPencil }} </v-icon>
+                <v-icon v-on="on" class="mr-1 pa-1" @click="editItem(props.item)" :disabled="isInspecting"> {{ mdiPencil }} </v-icon>
               </template>
               <span>Edit</span>
             </v-tooltip>
             <v-tooltip left open-delay="1000" :disabled="!showTooltips || isInspecting">
               <template v-slot:activator="{ on }">
-                <v-icon v-on="on" class="mr-2 pa-1 red--text" @click="deleteItem(props.item)" :disabled="isInspecting"> {{ mdiDelete }} </v-icon>
+                <v-icon v-on="on" class="mr-2 pa-1" @click="deleteItem(props.item)" :disabled="isInspecting"> {{ mdiDelete }} </v-icon>
               </template>
               <span>Delete</span>
             </v-tooltip>
@@ -83,7 +83,7 @@
       </template>
       <template slot="no-data">
         <tr>
-          <td class="blue--text" colspan="3">Scan the page or start adding elements to build the model</td>
+          <td colspan="3">Scan the page or start adding elements to build the model</td>
         </tr>
       </template>
     </v-data-table>
