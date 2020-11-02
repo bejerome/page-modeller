@@ -46,12 +46,10 @@ const transformLocatorName = locatorName => {
 // };
 
 const transformToPageObject = entity => {
-  const locator = entity.name;
+  const locator = entity.name.toLowerCase();
   
   switch (true) {
     case /btn$/.test(locator):
-      return 'button(';
-    case /Btn$/.test(locator):
       return 'button(';
     case /field$/.test(locator):
       return 'text_field(';
@@ -65,9 +63,9 @@ const transformToPageObject = entity => {
       return 'link(';
     case /div$/.test(locator):
       return 'div(';
-    case /Lbl$/.test(locator):
+    case /lbl$/.test(locator):
       return 'label(';
-    case /Value$/.test(locator):
+    case /value$/.test(locator):
       return 'label(';
     default:  
       return 'element(';
@@ -82,7 +80,7 @@ include PageObject::PageFactory
 
 `;
 
-const renderLocatorName = entity => lowerFirst(entity.name);
+const renderLocatorName = entity => entity.name.toLowerCase();
 
 const renderLocator = entity => {
   const locator = entity.locators.find(l => l.selected);

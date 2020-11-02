@@ -11,7 +11,7 @@
 
     <v-tooltip bottom :disabled="!showTooltips || !hasModel || isInspecting" open-delay="600">
       <template v-slot:activator="{ on }">
-        <v-btn class="red--text" v-on="on" icon :disabled="!hasModel || isInspecting" v-on:click="deleteModel">
+        <v-btn class="red--text" v-on="on" icon :disabled="!hasModel || isInspecting" v-on:click="deleteModel" @keydown.up="deleteModel">
           <v-icon>{{ mdiDeleteSweep }}</v-icon>
         </v-btn>
       </template>

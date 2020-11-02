@@ -4,7 +4,7 @@
       <v-toolbar dark dense flat>
         <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
-      <v-card-text style="height: 450px">
+      <v-card-text style="height: 90%">
         <pre>
           {{ code }}
         </pre>
@@ -57,9 +57,9 @@ export default {
 @import '../styles/buttons';
 pre {
   font-size: 15px;
-  color: #28abb9;
+  color: #2eb2a3;
 }
 v-toolbar-title {
-  color: #28abb9;
+  color: #2eb2a3;
 }
 </style>
